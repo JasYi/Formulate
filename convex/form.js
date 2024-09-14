@@ -16,7 +16,7 @@ export const submitForm = mutation({
     answers: v.array(
       v.object({
         question: v.string(),
-        answer: v.string(),
+        answer: v.union(v.string(), v.array(v.string())),
       })
     ),
     id: v.string(),
@@ -26,7 +26,9 @@ export const submitForm = mutation({
     args.answers.forEach((answer) => {
       submitScheme[answer.question] = answer.answer;
     });
-    const taskId = await ctx.db.insert(id, submitScheme);
+    console.log(submitScheme);
+    console.log(args.id);
+    const taskId = await ctx.db.insert(args.id, submitScheme);
     // do something with `taskId`
   },
 });
