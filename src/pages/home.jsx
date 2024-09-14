@@ -31,7 +31,7 @@ const Home = () => {
 
     const formID = await runAiCall({ imageId: docId });
 
-    console.log("form ID:", formID);
+    // console.log("form ID:", formID);
 
     navigate("/form?id=" + formID);
 
