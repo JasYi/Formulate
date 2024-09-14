@@ -5,7 +5,12 @@ import { v } from "convex/values";
 export const getAllEntries = query({
   args: { taskListId: v.string() },
   handler: async (ctx, args) => {
-    const tasks = await ctx.db.query("tasks");
+    if (args.taskListId == "") {
+      return [];
+    }
+    console.log(args.taskListId);
+    const tasks = await ctx.db.query("documents").collect();
+    console.log(tasks);
     return tasks;
   },
 });

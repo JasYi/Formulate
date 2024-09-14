@@ -1,11 +1,19 @@
 import React from "react";
 import { Page, LegacyCard, DataTable } from "@shopify/polaris";
 import { useSearchParams } from "react-router-dom";
+import { useQuery } from "convex/react";
+import { api } from "../../convex/_generated/api";
 
 const Dashboard = () => {
   const [searchParams] = useSearchParams();
 
   const formID = searchParams.get("id");
+
+  const formData = useQuery(api.dashboard.getAllEntries, {
+    taskListId: formID ? formID : "",
+  });
+
+  console.log(formData);
 
   const rows = [
     ["Emerald Silk Gown", "$875.00", 124689, 140, "$122,500.00"],
