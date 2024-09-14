@@ -1,4 +1,3 @@
-import "./App.css";
 import "@shopify/polaris/build/esm/styles.css";
 import { ConvexProvider, ConvexReactClient } from "convex/react";
 import {
