@@ -16,6 +16,7 @@ import type {
   FunctionReference,
 } from "convex/server";
 import type * as ai from "../ai.js";
+import type * as form from "../form.js";
 import type * as messages from "../messages.js";
 import type * as tasks from "../tasks.js";
 
@@ -29,6 +30,7 @@ import type * as tasks from "../tasks.js";
  */
 declare const fullApi: ApiFromModules<{
   ai: typeof ai;
+  form: typeof form;
   messages: typeof messages;
   tasks: typeof tasks;
 }>;

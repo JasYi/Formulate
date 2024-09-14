@@ -89,7 +89,7 @@ export const chat = action({
       ],
       temperature: 0,
       tools: [functionSchema],
-      max_tokens: 300,
+      max_tokens: 500,
     };
 
     // Make the API request
@@ -111,7 +111,9 @@ export const chat = action({
     const toolCall = data.choices[0].message.tool_calls[0];
     var res = toolCall.function;
     res["id"] = args.imageId;
+    console.log(res.arguments);
     res["arguments"] = JSON.parse(res.arguments);
+    console.log(res);
 
     const tableId = await ctx.runMutation(internal.ai.populateData, {
       jsonSchema: res,
@@ -153,7 +155,7 @@ export const populateData = internalMutation({
     console.log("IN INTERNAL MUTATION");
     const testId = await ctx.db.insert("testForm", { test: "TEST VAL" });
     const idOut = await ctx.db.insert("forms", {
-      name: args.jsonSchema.name,
+      name: args.jsonSchema.title,
       schema: args.jsonSchema.arguments,
     });
     console.log(idOut);
