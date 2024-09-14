@@ -3,6 +3,8 @@
     margin: 0 0;
 
     text-align: left;
+    overflow-y: auto; 
+    max-height: 100vh; 
   }
   
   .logo {
