@@ -2,11 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { useAction, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { useMutation } from "convex/react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const generateUploadUrl = useMutation(api.messages.generateUploadUrl);
   const sendImage = useMutation(api.messages.sendImage);
   const runAiCall = useAction(api.ai.chat);
+
+  const navigate = useNavigate();
 
   const imageInput = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -26,9 +29,11 @@ const Home = () => {
     // Step 3: Save the newly allocated storage id to the database
     const docId = await sendImage({ storageId, author: "user_upload" });
 
-    const jsonSchema = runAiCall({ imageId: docId });
+    const formID = await runAiCall({ imageId: docId });
 
-    console.log(jsonSchema);
+    console.log("form ID:", formID);
+
+    navigate("/form?id=" + formID);
 
     setSelectedImage(null);
     imageInput.current.value = "";
