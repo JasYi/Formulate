@@ -54,7 +54,7 @@ function Home() {
         <h2 className="main-title">Formulate</h2>
         <p className="subtitle">
           Design a website for your forms within seconds.<br />
-          No code or manual input required.
+          No code or manual input required..
         </p>
 
         {/* File Upload Section */}
