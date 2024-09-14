@@ -10,3 +10,5 @@ Currently, two official plugins are available:
 abc
 
 hi
+
+for redeployment
