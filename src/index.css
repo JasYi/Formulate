@@ -1,6 +1,9 @@
+.root {
+  background: #fefefe;
+}
 .formulate {
   text-align: center;
-  background: #f9f9f9;
+  background: #fefefe;
   height: 100vh;
   display: flex;
   flex-direction: column;
