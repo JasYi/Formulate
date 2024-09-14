@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./App.css";
+import "./index.css";
 import { useQuery } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { useMutation } from "convex/react";
