@@ -12,6 +12,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home";
 import Form from "./pages/form";
 import UploadForm from "./pages/loading";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="loading" element={<UploadForm />} />
           <Route path="form" element={<Form />} />
+          <Route path="dashboard" element={<Dashboard />} />
         </Routes>
       </BrowserRouter>
     </>
