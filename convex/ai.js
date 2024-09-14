@@ -1,4 +1,4 @@
-import { action, internalQuery } from "./_generated/server";
+import { action, internalQuery, internalMutation } from "./_generated/server";
 import { api, internal } from "./_generated/api";
 import { v } from "convex/values";
 
@@ -13,8 +13,6 @@ export const chat = action({
     const imgUrl = await ctx.runQuery(internal.ai.readData, {
       imageId: args.imageId,
     });
-
-    console.log(imgUrl);
 
     /*
     *****************************************************
@@ -89,34 +87,38 @@ export const chat = action({
           ],
         },
       ],
+      temperature: 0,
       tools: [functionSchema],
       max_tokens: 300,
     };
 
     // Make the API request
-    await fetch("https://api.openai.com/v1/chat/completions", {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify(body),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Process the response
-        console.log(data);
-        console.log(data.choices[0]);
-        const toolCall = data.choices[0].message.tool_calls[0];
-        console.log(toolCall);
-        return toolCall.function;
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    });
 
-    console.log("finished");
-    return "finished";
+    if (!response.ok) {
+      throw new Error(`API request failed with status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    const toolCall = data.choices[0].message.tool_calls[0];
+    var res = toolCall.function;
+    res["id"] = args.imageId;
+    res["arguments"] = JSON.parse(res.arguments);
+
+    const tableId = await ctx.runMutation(internal.ai.populateData, {
+      jsonSchema: res,
+    });
+
+    console.log(tableId);
+    return tableId;
   },
 });
 
@@ -124,10 +126,37 @@ export const chat = action({
 export const readData = internalQuery({
   args: { imageId: v.string() },
   handler: async (ctx, args) => {
-    console.log(args.imageId);
-
     const document = await ctx.db.get(args.imageId);
 
     return await ctx.storage.getUrl(document.body);
+  },
+});
+
+export const populateData = internalMutation({
+  args: {
+    jsonSchema: v.object({
+      name: v.string(),
+      arguments: v.object({
+        title: v.string(),
+        questions: v.array(
+          v.object({
+            question_text: v.string(),
+            question_type: v.string(),
+            answer_choices: v.optional(v.array(v.string())),
+          })
+        ),
+      }),
+      id: v.string(),
+    }),
+  },
+  handler: async (ctx, args) => {
+    console.log("IN INTERNAL MUTATION");
+    const testId = await ctx.db.insert("testForm", { test: "TEST VAL" });
+    const idOut = await ctx.db.insert("forms", {
+      name: args.jsonSchema.name,
+      schema: args.jsonSchema.arguments,
+    });
+    console.log(idOut);
+    return idOut;
   },
 });
