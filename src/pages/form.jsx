@@ -8,7 +8,7 @@ import {
   Button,
 } from "@shopify/polaris";
 import { useState, useCallback } from "react";
-import { useQuery } from "convex/react";
+import { useQuery, useMutation } from "convex/react";
 import { useSearchParams } from "react-router-dom";
 import { api } from "../../convex/_generated/api";
 
@@ -49,6 +49,7 @@ function FormOnSubmitExample() {
   const formID = searchParams.get("id");
   console.log("form ID:", formID);
   const formData = useQuery(api.form.getFormSchema, { formId: formID });
+  const submitForm = useMutation(api.form.submitForm);
 
   const [formValues, setFormValues] = useState({});
 
@@ -61,6 +62,7 @@ function FormOnSubmitExample() {
 
   const handleSubmit = useCallback(() => {
     console.log(formValues); // Logs the form values upon submission
+    submitForm({ answers: formValues, id: formID });
     setFormValues({}); // Clears form after submission
   }, [formValues]);
 
