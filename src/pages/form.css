@@ -1,8 +1,10 @@
 #root {
-    max-width: 1280px;
-    margin: 0 auto;
+    max-width: 100%;
+    margin: 0 0;
 
     text-align: left;
+    overflow-y: auto; 
+    max-height: 100vh; 
   }
   
   .logo {
