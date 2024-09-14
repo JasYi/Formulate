@@ -118,19 +118,21 @@ function FormOnSubmitExample() {
   } else {
     return (
       <>
-        {/* Dynamic heading with form title */}
-        <h1 style={{ fontWeight: "bold" }}>
-          {" "}
-          Hi! Let's complete your {formData.name} form!{" "}
-        </h1>
-        <Form onSubmit={handleSubmit}>
-          <FormLayout>
-            {formData.schema.questions.map(
-              (field) => renderField(field) // Conditionally render form fields based on the type
-            )}
-            <Button submit>Submit</Button>
-          </FormLayout>
-        </Form>
+        <div className="overflow-auto">
+          {/* Dynamic heading with form title */}
+          <h1 style={{ fontWeight: "bold" }}>
+            {" "}
+            Hi! Let's complete your {formData.schema.title} form!{" "}
+          </h1>
+          <Form onSubmit={handleSubmit}>
+            <FormLayout>
+              {formData.schema.questions.map(
+                (field) => renderField(field) // Conditionally render form fields based on the type
+              )}
+              <Button submit>Submit</Button>
+            </FormLayout>
+          </Form>
+        </div>
       </>
     );
   }
