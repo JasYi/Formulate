@@ -36,6 +36,7 @@ export const chat = action({
             },
             questions: {
               type: ["array"],
+              description: "The questions in the form",
               items: {
                 type: "object",
                 properties: {
@@ -53,13 +54,14 @@ export const chat = action({
                     items: {
                       type: ["string"],
                     },
-                    description: "The possible answers to the question",
+                    description:
+                      "The possible answers to the question. This field is populated if and only if the question_type is multiple_choice or checkbox.",
                   },
                 },
               },
             },
           },
-          required: ["app_start", "app_end"],
+          required: ["title", "questions", "question_text", "question_type"],
         },
       },
     };
