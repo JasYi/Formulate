@@ -8,10 +8,11 @@ export const generateUploadUrl = mutation(async (ctx) => {
 export const sendImage = mutation({
   args: { storageId: v.id("_storage"), author: v.string() },
   handler: async (ctx, args) => {
-    await ctx.db.insert("documents", {
+    const docId = await ctx.db.insert("documents", {
       body: args.storageId,
       author: args.author,
       format: "image",
     });
+    return docId;
   },
 });
