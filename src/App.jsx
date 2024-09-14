@@ -11,6 +11,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/home";
 import Form from "./pages/form";
+import UploadForm from "./pages/loading";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="loading" element={<UploadForm />} />
           <Route path="form" element={<Form />} />
         </Routes>
       </BrowserRouter>

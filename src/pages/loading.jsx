@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.css'; // Import your CSS for styling
-import { Spinner } from '@shopify/polaris'; // Or any other spinner from a library like react-icons
+import React from "react";
+// import './App.css'; // Import your CSS for styling
+import { Spinner } from "@shopify/polaris"; // Or any other spinner from a library like react-icons
 
 function UploadForm() {
   return (
@@ -30,7 +30,8 @@ function UploadForm() {
             Created database.
           </li>
           <li className="progress-item">
-            <Spinner accessibilityLabel="Loading..." size="small" /> Finishing touches...
+            <Spinner accessibilityLabel="Loading..." size="small" /> Finishing
+            touches...
           </li>
         </ul>
       </div>

@@ -23,6 +23,11 @@ const formData = {
       Type: "text",
       Answer: null,
     },
+    // {
+    //     Question: "State",
+    //     Type: "multiple_choice",
+    //     Answer: ["Alabama", "Alaska", "Arizona", "Arkansas", "California"],
+    //   },
     {
       Question: "Newsletter",
       Type: "checkbox",
