@@ -14,12 +14,21 @@
     transition: filter 300ms;
   }
   .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
+    filter: drop-shadow(0 0 1.4em #121212aa);
   }
   .logo.react:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 1.4em #121212aa);
   }
-  
+
+  .main-title {
+    transition: filter 400ms;
+  }
+  .main-title:hover {
+    filter: drop-shadow(0 0 0.4em #121212aa);
+  }
+
+
+
   @keyframes logo-spin {
     from {
       transform: rotate(0deg);
