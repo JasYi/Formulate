@@ -8,6 +8,7 @@ Hackathon project for Hack the North
 - Convex
 - OpenAI
 - Shopify Polaris
+- anime.js
 
 ## How it Works
 
