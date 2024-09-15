@@ -126,7 +126,7 @@ function Home() {
       <main>
         
         <h2 ref={mainTitleRef} className="main-title">Formulate</h2>
-        <p className="inline-block">Make beautiful </p>
+        <p className="inline-block">Make beautiful</p>
         <div ref={typingTextRef} className="type text-lg font-semibold text-blue-600 h-8 mb-8"></div>
         <p ref={subtitleRef} className="subtitle">
           Design a website for your forms within seconds.

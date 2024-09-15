@@ -1,12 +1,70 @@
 .flex-div {
-  display: flex;
+
   align-items: center;
 }
 
+@font-face {
+  font-family: 'PP Radio Grotesk Bold';
+  src: url('fonts/ppradiogrotesk/PPRadioGrotesk-Bold.woff2') format('woff2'),
+       url('fonts/ppradiogrotesk/PPRadioGrotesk-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+.logo {
+  margin: 0.7rem;
+}
+.main-title {
+  font-family: 'PP Radio Grotesk Bold';
+  font-size: 3rem;
+  font-weight: 700;
+  margin-top: 0.4rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
 .link {
   color: black;
   width: fit-content;
   margin-left: 5px;
   margin-right: 10px;
   font-weight: bold;
+}
+.text-lg {
+  line-height: 2.3rem;
+  margin-left: 0.7rem;
+}
+.h2 {
+  font-size: 1.2rem;
+  font-weight: 1200px;
+  line-height: 1.5rem;
+  color: #d5d5d5;
+  margin-top: 0.2rem;
+  margin-left: 0.7rem;
+  margin-bottom: 2rem;
+}
+
+
+.Polaris-TextField {
+  margin-left: 0.5rem;
+}
+
+.Polaris-Connected__Item {
+  margin-left: 0.rem;
+  margin-right: 0.7rem;
+}
+
+.Polaris-Button {
+  margin-left: 0.7rem;
+  margin-bottom: 0.7rem;
+}
+
+.label {
+  margin-left: 0.7rem;
+}
+
+a {
+  font-family: 'PP Radio Grotesk Bold';
+  color: #333;
+  text-decoration: none;
 }
