@@ -83,22 +83,6 @@ function Home() {
       )
       .add(
         {
-          targets: typingSubRef.current,
-          opacity: [0, 1],
-          duration: 1200,
-        },
-        "-=600"
-      )
-      .add(
-        {
-          targets: typingTextRef.current,
-          opacity: [0, 1],
-          duration: 1200,
-        },
-        "-=600"
-      )
-      .add(
-        {
           targets: subtitleRef.current,
           opacity: [0, 1],
           duration: 1200,
