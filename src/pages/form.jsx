@@ -70,18 +70,31 @@ function FormOnSubmitExample() {
           />
         );
       case "checkbox":
-        return (
-          <ChoiceList
-            allowMultiple
-            title={field.question_text}
-            choices={field.answer_choices.map((choice) => ({
-              label: choice,
-              value: choice,
-            }))}
-            selected={formValues[field.question_text] || []}
-            onChange={(value) => handleChange(field.question_text, value)}
-          />
-        );
+        if (field.answer_choices === undefined) {
+          return (
+            <Checkbox
+              key={field.question_text}
+              label={field.question_text}
+              checked={!!formValues[field.question_text]}
+              onChange={(value) =>
+                handleChange(field.question_text, String(value))
+              }
+            />
+          );
+        } else {
+          return (
+            <ChoiceList
+              allowMultiple
+              title={field.question_text}
+              choices={field.answer_choices.map((choice) => ({
+                label: choice,
+                value: choice,
+              }))}
+              selected={formValues[field.question_text] || []}
+              onChange={(value) => handleChange(field.question_text, value)}
+            />
+          );
+        }
       case "date":
         return (
           <TextField

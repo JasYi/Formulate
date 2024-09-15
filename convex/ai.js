@@ -91,7 +91,7 @@ export const chat = action({
       ],
       temperature: 0,
       tools: [functionSchema],
-      max_tokens: 500,
+      max_tokens: 1000,
     };
 
     // Make the API request
