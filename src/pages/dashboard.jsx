@@ -67,7 +67,7 @@ const Dashboard = () => {
   if (!formData) {
     return (
       <Frame>
-        <Page title={<h1 className="main-title">Data Dashboard</h1>}>
+        <Page title={<h1 className="dash-title">Data Dashboard</h1>}>
           <LegacyCard>
             <div className="p-4 text-center">Loading...</div>
           </LegacyCard>
@@ -95,7 +95,7 @@ const Dashboard = () => {
           <h1 className="header-title text-2x1 font-bold">Formulate</h1>
         </div>
         </a>
-      <Page title={<h1 className="main-title">Data Dashboard</h1>}>
+      <Page title={<h1 className="dash-title">Data Dashboard</h1>}>
       <LegacyCard>
         <div className="p-4">
           {showAlert && (
@@ -108,7 +108,7 @@ const Dashboard = () => {
             </Banner>
           )}
           <div className="flex-div mb-4">
-            <h2 className="text-lg font-semibold mr-4">
+            <h2 className="text-lg datsub font-semibold mr-4">
               This is your data dashboard, <b>save this link</b>!
             </h2>
             <TextField
@@ -125,26 +125,17 @@ const Dashboard = () => {
                   </Button>
               }
               />
-            {/* <a
-              href={window.location.hostname + "/form?id=" + formID}
-              className="text-blue-600 hover:underline mr-4"
-            >
-              You can view your form here.
-            </a>
-            <Button
-              icon={ClipboardIcon}
-              onClick={copyToClipboard}
-              accessibilityLabel="Copy link"
-            >
-              Copy Link
-            </Button> */}
+            {}
           </div>
           <DataTable
-            columnContentTypes={Array(5).fill("text")}
-            headings={["formData[0]", "hello", "world"]}
-            rows={[[1,2,3],[1,2,3]]}
+            columnContentTypes={Array.from(
+              { length: formData[0].length },
+              (_, x) => x
+            ).map((x) => "text")}
+            headings={formData[0]}
+            rows={formData[1]}
           />
-          {3 > 0 && (
+          {formData[0].length > 0 && (
             <Button onClick={downloadCSV} className="mt-4">
               Download CSV
             </Button>

@@ -1,4 +1,4 @@
-# Formulate, go from paperwork to webforms with one click | try @ [formulate.live](https://www.formulate.live)
+# Formulate: go from paperwork to webforms with one click | try @ [formulate.live](https://www.formulate.live)
 
 Hackathon project for Hack the North
 
@@ -8,6 +8,8 @@ Hackathon project for Hack the North
 - Convex
 - OpenAI
 - Shopify Polaris
+- anime.js
+- Typed.js
 
 ## How it Works
 
