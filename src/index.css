@@ -42,7 +42,7 @@
 .app-header {
   position: absolute;
   top: 1rem;
-  left: 2rem;
+  left: 1.7vw;
 }
 .logo-container {
   display: flex;
@@ -64,7 +64,7 @@
 }
 
 .main-title {
-  font-size: 6rem;
+  font-size: 7.5vw;
   font-weight: 700;
   margin-top: 1.5rem;
   color: #333;
@@ -73,7 +73,7 @@
 }
 
 .subtitle {
-  font-size: 1.2rem;
+  font-size: 1.4vw;
   font-weight: 1200px;
   line-height: 1.5rem;
   color: #181818;
