@@ -27,7 +27,27 @@ function Home() {
   const backgroundRef = useRef(null);
   const fileInputRef = useRef(null);
   const typingSubRef = useRef(null);
+  const [darkMode, setDarkMode] = useState(false);
+  // ... (other state variables and hooks)
 
+  useEffect(() => {
+    // ... (existing useEffect code)
+
+    // Add dark mode class to body when darkMode state changes
+    if (darkMode) {
+      document.body.classList.add('dark-mode');
+    } else {
+      document.body.classList.remove('dark-mode');
+    }
+
+    return () => {
+      document.body.classList.remove('dark-mode');
+    };
+  }, [darkMode]);
+
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
   useEffect(() => {
     const animation = anime({
       targets: backgroundRef.current,
@@ -152,7 +172,7 @@ function Home() {
     ],
       typeSpeed: 50,
       backSpeed: 30,
-      backDelay: 1000,
+      backDelay: 1200,
       startDelay: 500,
       loop: true,
       showCursor: true,
@@ -211,9 +231,12 @@ function Home() {
           <h1 className="header-title text-2x1 font-bold">Formulate</h1>
         </div>
         </a>
+        <button onClick={toggleDarkMode} className="theme-toggle">
+          {darkMode ? '☀️' : '🌙'}
+        </button>
       </header>
 
-      <main>
+      <main className="text-center">
         <h2 ref={mainTitleRef} className="main-title">
           Formulate
         </h2>

@@ -7,9 +7,26 @@
   font-style: normal;
 }
 
+:root {
+  --bg-color: #fefefe;
+  --text-color: #333;
+  --subtitle-color: #181818;
+  --upload-bg: #aeaeae;
+  --upload-border: #000000;
+  --button-bg: #333;
+  --button-text: #fff;
+  --button-hover: #555;
+}
+
+.dark-mode {
+  --bg-color: rgb(0, 0, 0);
+  --upload-bg: #515151;
+
+}
+
 .root {
-  background: #fefefe;
-  margin: 0px;
+  background: var(--bg-color);
+  margin: 0;
   font-family:
     system-ui,
     -apple-system,
@@ -22,11 +39,12 @@
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+  color: var(--text-color);
 }
 
 .formulate {
   text-align: center;
-  background: #fefefe;
+  background: var(--bg-color);
   background-image: url("assets/24.png");
   background-repeat: no-repeat;
   background-position: center;
@@ -38,17 +56,27 @@
   justify-content: center;
   line-height: 1.5rem;
   padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.dark-mode .formulate {
+  filter: invert(1) hue-rotate(180deg);
+  background-blend-mode: difference
 }
 
 .app-header {
   position: absolute;
   top: 1rem;
   left: 1.7vw;
+  right: 1.7vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 .logo-container {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
 }
 
 .logo {
@@ -57,6 +85,7 @@
   margin-right: 0.5rem;
   transition: 300ms;
 }
+
 .header-title {
   font-family: "PP Radio Grotesk Bold";
   font-size: 1.5rem;
@@ -68,16 +97,16 @@
   font-size: 6rem;
   font-weight: 700;
   margin-top: 1.5rem;
-  color: #333;
+  color: var(--text-color);
   line-height: 1.6rem;
   margin-bottom: 2.5rem;
 }
 
 .subtitle {
   font-size: 1.4vw;
-  font-weight: 1200px;
+  font-weight: 600;
   line-height: 1.5rem;
-  color: #181818;
+  color: var(--subtitle-color);
   margin-top: 10%;
   margin-bottom: 2rem;
 }
@@ -95,19 +124,18 @@ label[for="file-input"] {
   display: flex;
   align-items: center;
   cursor: pointer;
-  background-color: #aeaeae;
-  border: 1.5px dashed #000000;
+  background-color: var(--upload-bg);
+  border: 1.5px dashed var(--upload-border);
   padding: 1rem;
   border-radius: 8px;
-  color: #333;
+  color: var(--upload-border);
 }
 
 .inline-block {
   font-size: 1.2rem;
   font-weight: 550;
-
   line-height: 1.5rem;
-  color: #333;
+  color: var(--text-color);
   margin-top: 4rem;
   display: inline;
 }
@@ -115,12 +143,12 @@ label[for="file-input"] {
 .type {
   font-size: 1.2rem;
   font-weight: 750;
-
   line-height: 1.5rem;
-  color: #333;
+  color: var(--text-color);
   margin-top: 4rem;
   display: inline;
 }
+
 .upload-icon {
   width: 24px;
   height: 24px;
@@ -129,26 +157,35 @@ label[for="file-input"] {
 
 .file-name {
   margin-top: 1rem;
-  color: #333;
-}
-input[type="submit"] {
-  margin-top: 1rem;
-  background-color: #333; /* Dark color for the button */
-  color: #fff; /* White text color */
-  padding: 0.75rem 1.5rem; /* Padding for a button-like feel */
-  border: none; /* No borders */
-  border-radius: 8px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor for hover effect */
-  font-size: 1rem; /* Adjust font size */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  color: var(--text-color);
 }
 
-input[type="submit"]:hover {
-  background-color: #555; /* Slightly lighter color on hover */
+.SendImage {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 1rem;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.SendImage:hover:not(:disabled) {
+  background-color: var(--button-hover);
 }
 
 .file-msg {
-  color: #d5d5d5;
+  color: var(--subtitle-color);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--text-color);
 }
 
 @media (max-width: 768px) {
