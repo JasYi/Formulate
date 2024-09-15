@@ -1,0 +1,24 @@
+.container {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  flex-direction: column;
+}
+
+.text {
+  text-align: center;
+  justify-content: center;
+}
+
+.main-txt {
+  font-size: 1.6rem;
+  line-height: 3rem;
+  font-weight: bold;
+}
+
+.second-txt {
+  font-size: 1.3rem;
+}

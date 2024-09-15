@@ -12,6 +12,7 @@ import { useState, useCallback } from "react";
 import { useQuery, useMutation } from "convex/react";
 import { useSearchParams } from "react-router-dom";
 import { api } from "../../convex/_generated/api";
+import { useNavigate } from "react-router-dom";
 
 function FormOnSubmitExample() {
   const [searchParams] = useSearchParams();
@@ -23,6 +24,8 @@ function FormOnSubmitExample() {
   const [formValues, setFormValues] = useState({});
 
   const [selected, setSelected] = useState(["hidden"]);
+
+  const navigate = useNavigate();
 
   const handleMultiChange = useCallback((value) => setSelected(value), []);
 
@@ -41,6 +44,7 @@ function FormOnSubmitExample() {
     }));
     submitForm({ answers: finalFormValues, id: formID });
     setFormValues({}); // Clears form after submission
+    navigate("/submission");
   }, [formValues]);
 
   // Function to dynamically render fields based on the "Type" in JSON
@@ -126,6 +130,7 @@ function FormOnSubmitExample() {
               {formData.schema.questions.map(
                 (field) => renderField(field) // Conditionally render form fields based on the type
               )}
+
               <Button submit>Submit</Button>
             </FormLayout>
           </Form>
