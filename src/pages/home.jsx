@@ -5,11 +5,14 @@ import { useAction, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { useMutation } from "convex/react";
 import { useNavigate } from "react-router-dom";
+import { BarLoader } from "react-spinners";
 
 function Home() {
   const generateUploadUrl = useMutation(api.messages.generateUploadUrl);
   const sendImage = useMutation(api.messages.sendImage);
   const runAiCall = useAction(api.ai.chat);
+
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -82,6 +85,7 @@ function Home() {
   }, []);
 
   async function handleSendImage(event) {
+    setLoading(true);
     event.preventDefault();
 
     // Step 1: Get a short-lived upload URL
@@ -143,43 +147,50 @@ function Home() {
           No code or manual input required.
         </p>
         {/* File Upload Section */}
-        <div ref={fileUploadRef} className="file-upload">
-          <form onSubmit={handleSendImage}>
-            <input
-              type="file"
-              accept="image/*"
-              ref={imageInput}
-              onChange={(event) => setSelectedImage(event.target.files[0])}
-              disabled={selectedImage !== null}
-              id="file-input"
-            />
-            <label htmlFor="file-input">
-              <span>Drag and drop a file (Max size 50MB)</span>
-              <svg
-                className="upload-icon"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M12 19L12 5M12 5L5 12M12 5L19 12"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </label>
-            <input
-              type="submit"
-              value="Send Image"
-              disabled={selectedImage === null}
-            />
-          </form>
-        </div>
+        {loading && (
+          <div className="file-upload">
+            <BarLoader color="#d5d5d5" size="80" />
+          </div>
+        )}
+        {!loading && (
+          <div ref={fileUploadRef} className="file-upload">
+            <form onSubmit={handleSendImage}>
+              <input
+                type="file"
+                accept="image/*"
+                ref={imageInput}
+                onChange={(event) => setSelectedImage(event.target.files[0])}
+                disabled={selectedImage !== null}
+                id="file-input"
+              />
+              <label htmlFor="file-input">
+                <span>Drag and drop a file (Max size 50MB)</span>
+                <svg
+                  className="upload-icon"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M12 19L12 5M12 5L5 12M12 5L19 12"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </label>
+              <input
+                type="submit"
+                value="Send Image"
+                disabled={selectedImage === null}
+              />
+            </form>
+            {selectedImage != null && (
+              <p className="file-msg">Successfully uploaded file!</p>
+            )}
+          </div>
+        )}
       </main>
-      {selectedImage != null && (
-        <p className="file-msg">Successfully uploaded file!</p>
-      )}
     </div>
   );
 }
