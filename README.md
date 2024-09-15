@@ -9,6 +9,7 @@ Hackathon project for Hack the North
 - OpenAI
 - Shopify Polaris
 - anime.js
+- Typed.js
 
 ## How it Works
 
