@@ -8,6 +8,10 @@ import "./dashboard.css";
 import { Button } from "@shopify/polaris";
 import { ClipboardIcon } from "@shopify/polaris-icons";
 
+const Display = ({ display, action }) => {
+  if (display) <Button onClick={action}>Download CSV</Button>;
+};
+
 const Dashboard = () => {
   const [searchParams] = useSearchParams();
 
@@ -80,7 +84,9 @@ const Dashboard = () => {
             rows={formData[1]}
           />
         </LegacyCard>
-        <Button onClick={downloadCSV}>Download CSV</Button>
+        {formData[0].length > 0 && (
+          <Button onClick={downloadCSV}>Download CSV</Button>
+        )}
       </Page>
     </div>
   );
