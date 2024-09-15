@@ -126,7 +126,8 @@ function FormOnSubmitExample() {
               {formData.schema.questions.map(
                 (field) => renderField(field) // Conditionally render form fields based on the type
               )}
-              <Button submit>Submit</Button>
+              
+              <Button submit onClick={() => alert("Form Submitted Successfully.")}>Submit</Button>
             </FormLayout>
           </Form>
         </div>
