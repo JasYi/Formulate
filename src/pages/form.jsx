@@ -127,7 +127,7 @@ function FormOnSubmitExample() {
                 (field) => renderField(field) // Conditionally render form fields based on the type
               )}
               
-              <button type="button" onClick={() => alert('Form submitted successfully!')}> Submit </button>
+              <Button submit onClick={() => alert("Form Submitted Successfully.")}>Submit</Button>
             </FormLayout>
           </Form>
         </div>
