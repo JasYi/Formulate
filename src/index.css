@@ -78,7 +78,7 @@
   font-weight: 1200px;
   line-height: 1.5rem;
   color: #181818;
-  margin-top: 4rem;
+  margin-top: 10%;
   margin-bottom: 2rem;
 }
 
@@ -175,8 +175,7 @@ input[type="submit"]:hover {
   }
 
   .subtitle {
-    font-size: 1.2rem;
-
+    font-size: 1.1rem;
   }
 
   .header-title {
