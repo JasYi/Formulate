@@ -13,6 +13,7 @@ import Home from "./pages/home";
 import Form from "./pages/form";
 import UploadForm from "./pages/loading";
 import Dashboard from "./pages/dashboard";
+import Submission from "./pages/submission";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="loading" element={<UploadForm />} />
           <Route path="form" element={<Form />} />
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="submission" element={<Submission />} />
         </Routes>
       </BrowserRouter>
     </>
