@@ -15,7 +15,7 @@
 .logo {
   margin: 0.7rem;
 }
-.main-title {
+.dash-title {
   font-family: 'PP Radio Grotesk Bold';
   font-size: 3rem;
   font-weight: 700;
@@ -23,6 +23,7 @@
   color: #333;
   margin-bottom: 1rem;
 }
+
 .link {
   color: black;
   width: fit-content;

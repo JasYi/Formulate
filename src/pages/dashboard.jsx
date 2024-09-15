@@ -67,7 +67,7 @@ const Dashboard = () => {
   if (!formData) {
     return (
       <Frame>
-        <Page title={<h1 className="main-title">Data Dashboard</h1>}>
+        <Page title={<h1 className="dash-title">Data Dashboard</h1>}>
           <LegacyCard>
             <div className="p-4 text-center">Loading...</div>
           </LegacyCard>
@@ -95,7 +95,7 @@ const Dashboard = () => {
           <h1 className="header-title text-2x1 font-bold">Formulate</h1>
         </div>
         </a>
-      <Page title={<h1 className="main-title">Data Dashboard</h1>}>
+      <Page title={<h1 className="dash-title">Data Dashboard</h1>}>
       <LegacyCard>
         <div className="p-4">
           {showAlert && (
