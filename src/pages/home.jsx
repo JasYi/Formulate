@@ -13,7 +13,7 @@ function Home() {
   const runAiCall = useAction(api.ai.chat);
 
   const [loading, setLoading] = useState(false);
-
+  const animationPlayedRef = useRef(false);
   const navigate = useNavigate();
 
   const imageInput = useRef(null);
@@ -27,22 +27,20 @@ function Home() {
   const backgroundRef = useRef(null);
   const fileInputRef = useRef(null);
   const typingSubRef = useRef(null);
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem('darkMode');
+    return savedMode ? JSON.parse(savedMode) : false;
+  });
   // ... (other state variables and hooks)
 
   useEffect(() => {
-    // ... (existing useEffect code)
-
-    // Add dark mode class to body when darkMode state changes
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
+  
     if (darkMode) {
       document.body.classList.add('dark-mode');
     } else {
       document.body.classList.remove('dark-mode');
     }
-
-    return () => {
-      document.body.classList.remove('dark-mode');
-    };
   }, [darkMode]);
 
   const toggleDarkMode = () => {
@@ -63,6 +61,7 @@ function Home() {
       loop: true,
     })
 
+    
     return () => animation.pause()
   }, [])
 
@@ -82,41 +81,45 @@ function Home() {
     }
   }
   useEffect(() => {
-    const timeline = anime.timeline({
-      easing: "easeOutExpo",
-      duration: 1000,
-    });
+    if (!animationPlayedRef.current) {
+      const timeline = anime.timeline({
+        easing: "easeOutExpo",
+        duration: 1000,
+      });
 
-    timeline
-      .add({
-        targets: headerRef.current,
-        opacity: [0, 1],
-        duration: 1200,
-      })
-      .add(
-        {
-          targets: mainTitleRef.current,
+      timeline
+        .add({
+          targets: headerRef.current,
           opacity: [0, 1],
           duration: 1200,
-        },
-        "-=600"
-      )
-      .add(
-        {
-          targets: subtitleRef.current,
-          opacity: [0, 1],
-          duration: 1200,
-        },
-        "-=600"
-      )
-      .add(
-        {
-          targets: fileUploadRef.current,
-          opacity: [0, 1],
-          duration: 1200,
-        },
-        "-=600"
-      );
+        })
+        .add(
+          {
+            targets: mainTitleRef.current,
+            opacity: [0, 1],
+            duration: 1200,
+          },
+          "-=600"
+        )
+        .add(
+          {
+            targets: subtitleRef.current,
+            opacity: [0, 1],
+            duration: 1200,
+          },
+          "-=600"
+        )
+        .add(
+          {
+            targets: fileUploadRef.current,
+            opacity: [0, 1],
+            duration: 1200,
+          },
+          "-=600"
+        );
+
+      animationPlayedRef.current = true;
+    }
 
     const typed = new Typed(typingTextRef.current, {
       strings: [
@@ -179,12 +182,12 @@ function Home() {
       cursorChar: "●",
       shuffle: true,
     });
-
+    
     // Clean up function
     return () => {
       typed.destroy();
     };
-  }, []);
+  }, [darkMode]);
 
   async function handleSendImage(event) {
     setLoading(true);
@@ -213,7 +216,7 @@ function Home() {
   }
 
   return (
-    <div className="formulate min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 flex flex-col items-center justify-center p-4">
+    <div className="formulate ${darkMode?'dark-mode':}''}`}min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 flex flex-col items-center justify-center p-4">
       <header ref={headerRef} className="app-header mb-8">
       <a href="/" className="block">
       <div className="logo flex items-center space-x-2">
