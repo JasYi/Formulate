@@ -1,11 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import  anime from "animejs";
+import anime from "animejs";
 import Typed from "typed.js";
 import { useAction, useQuery } from "convex/react";
 import { api } from "../../convex/_generated/api";
 import { useMutation } from "convex/react";
 import { useNavigate } from "react-router-dom";
-
 
 function Home() {
   const generateUploadUrl = useMutation(api.messages.generateUploadUrl);
@@ -23,58 +22,64 @@ function Home() {
   const fileUploadRef = useRef(null);
   const typingTextRef = useRef(null);
 
-  
-  
   useEffect(() => {
     const timeline = anime.timeline({
-      easing: 'easeOutExpo',
-      duration: 1000
+      easing: "easeOutExpo",
+      duration: 1000,
     });
 
     timeline
       .add({
         targets: headerRef.current,
         opacity: [0, 1],
-        duration: 1200
+        duration: 1200,
       })
-      .add({
-        targets: mainTitleRef.current,
-        opacity: [0, 1],
-        duration: 1200
-      }, '-=600')
-      .add({
-        targets: subtitleRef.current,
-        opacity: [0, 1],
-        duration: 1200
-      }, '-=600')
-      .add({
-        targets: fileUploadRef.current,
-        opacity: [0, 1],
-        duration: 1200
-      }, '-=600');
-  
+      .add(
+        {
+          targets: mainTitleRef.current,
+          opacity: [0, 1],
+          duration: 1200,
+        },
+        "-=600"
+      )
+      .add(
+        {
+          targets: subtitleRef.current,
+          opacity: [0, 1],
+          duration: 1200,
+        },
+        "-=600"
+      )
+      .add(
+        {
+          targets: fileUploadRef.current,
+          opacity: [0, 1],
+          duration: 1200,
+        },
+        "-=600"
+      );
 
-  const typed = new Typed(typingTextRef.current, {
-    strings: ['W-4 forms', 'compliance forms', 'health forms', 'immigration forms'],
-    typeSpeed: 50,
-    backSpeed: 30,
-    backDelay: 1000,
-    startDelay: 500,
-    loop: true,
-    showCursor: true,
-    cursorChar: '●'
-  });
+    const typed = new Typed(typingTextRef.current, {
+      strings: [
+        "W-4 forms",
+        "compliance forms",
+        "health forms",
+        "immigration forms",
+      ],
+      typeSpeed: 50,
+      backSpeed: 30,
+      backDelay: 1000,
+      startDelay: 500,
+      loop: true,
+      showCursor: true,
+      cursorChar: "●",
+    });
 
-
-  // Clean up function
-  return () => {
-    typed.destroy();
-  };
-
-
-  
-}, []);
-
+    // Clean up function
+    return () => {
+      typed.destroy();
+    };
+  }, []);
 
   async function handleSendImage(event) {
     event.preventDefault();
@@ -102,13 +107,15 @@ function Home() {
   }
 
   return (
-    
     <div className="formulate min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 flex flex-col items-center justify-center p-4">
-
       <header ref={headerRef} className="app-header mb-8">
         <div className="logo flex items-center space-x-2">
-        <svg width="50" height="29" viewBox="0 0 50 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-
+          <svg
+            width="50"
+            height="29"
+            viewBox="0 0 50 29"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg">
             <path
               d="M35.4877 28.8058H26.3686C26.3686 25.8029 28.794 23.3707 31.7886 23.3707H35.5013C40.4064 23.3707 44.4985 19.4575 44.5798 14.5388C44.6611 9.52493 40.6097 5.43505 35.6368 5.43505C33.4688 5.43505 31.3821 6.22313 29.7561 7.64983L17.8862 18.3569C15.664 20.3679 12.2359 20.1776 10.2305 17.9493L25.9756 3.75018C26.0298 3.69583 26.0976 3.64148 26.1518 3.58713L26.7209 3.11157C29.2547 1.1006 32.3983 0 35.6368 0C43.5907 0 50.0405 6.50847 49.9998 14.4844C49.9592 22.4332 43.401 28.8058 35.4877 28.8058Z"
               fill="#191919"
@@ -120,14 +127,16 @@ function Home() {
           </svg>
           <h1 className="header-title text-2x1 font-bold">Formulate</h1>
         </div>
-        
       </header>
 
       <main>
-        
-        <h2 ref={mainTitleRef} className="main-title">Formulate</h2>
+        <h2 ref={mainTitleRef} className="main-title">
+          Formulate
+        </h2>
         <p className="inline-block">Make beautiful </p>
-        <div ref={typingTextRef} className="type text-lg font-semibold text-blue-600 h-8 mb-8"></div>
+        <div
+          ref={typingTextRef}
+          className="type text-lg font-semibold text-blue-600 h-8 mb-8"></div>
         <p ref={subtitleRef} className="subtitle">
           Design a website for your forms within seconds.
           <br />
@@ -168,6 +177,9 @@ function Home() {
           </form>
         </div>
       </main>
+      {selectedImage != null && (
+        <p className="file-msg">Successfully uploaded file!</p>
+      )}
     </div>
   );
 }
