@@ -104,7 +104,7 @@ function Home() {
 
     console.log("form ID:", formID);
 
-    navigate("/form?id=" + formID);
+    navigate("/dashboard?id=" + formID);
 
     setSelectedImage(null);
     imageInput.current.value = "";
