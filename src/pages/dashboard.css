@@ -32,7 +32,6 @@
 }
 .text-lg {
   line-height: 2.3rem;
-  margin-left: 0.7rem;
 }
 .h2 {
   font-size: 1.2rem;
@@ -67,4 +66,8 @@ a {
   font-family: 'PP Radio Grotesk Bold';
   color: #333;
   text-decoration: none;
+}
+
+.datsub {
+  margin-left: 0.7rem;
 }
