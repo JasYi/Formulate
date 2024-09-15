@@ -24,10 +24,9 @@ function Home() {
   const subtitleRef = useRef(null);
   const fileUploadRef = useRef(null);
   const typingTextRef = useRef(null);
-  const backgroundRef = useRef(null)
-  const fileInputRef = useRef(null)
-  const [fileName, setFileName] = useState('')
-  const [uploadStatus, setUploadStatus] = useState(null)
+  const backgroundRef = useRef(null);
+  const fileInputRef = useRef(null);
+  const typingSubRef = useRef(null);
 
   useEffect(() => {
     const animation = anime({
@@ -79,6 +78,22 @@ function Home() {
           targets: mainTitleRef.current,
           opacity: [0, 1],
           duration: 1200,
+        },
+        "-=600"
+      )
+      .add(
+        {
+          targets: typingSubRef.current,
+          opacity: [0, 1],
+          duration: 1200,
+        },
+        "-=600"
+      )
+      .add(
+        {
+          targets: typingTextRef.current,
+          opacity: [0, 1],
+          duration: 120,
         },
         "-=600"
       )
@@ -172,7 +187,7 @@ function Home() {
         <h2 ref={mainTitleRef} className="main-title">
           Formulate
         </h2>
-        <p className="inline-block">Make beautiful </p>
+        <p ref={typingSubRef} className="inline-block">Make beautiful </p>
         <div
           ref={typingTextRef}
           className="type text-lg font-semibold text-blue-600 h-8 mb-8"></div>
