@@ -24,7 +24,9 @@ export const submitForm = mutation({
   handler: async (ctx, args) => {
     var submitScheme = {};
     args.answers.forEach((answer) => {
-      submitScheme[answer.question] = answer.answer;
+      if (Array.isArray(answer.answer))
+        submitScheme[answer.question] = answer.answer.join(", ");
+      else submitScheme[answer.question] = answer.answer;
     });
     console.log(submitScheme);
     console.log(args.id);

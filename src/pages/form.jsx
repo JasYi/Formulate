@@ -22,6 +22,10 @@ function FormOnSubmitExample() {
 
   const [formValues, setFormValues] = useState({});
 
+  const [selected, setSelected] = useState(["hidden"]);
+
+  const handleMultiChange = useCallback((value) => setSelected(value), []);
+
   const handleChange = useCallback((question, value) => {
     setFormValues((prevValues) => ({
       ...prevValues,
@@ -67,10 +71,14 @@ function FormOnSubmitExample() {
         );
       case "checkbox":
         return (
-          <Checkbox
-            key={field.question_text}
-            label={field.question_text}
-            checked={!!formValues[field.question_text]}
+          <ChoiceList
+            allowMultiple
+            title={field.question_text}
+            choices={field.answer_choices.map((choice) => ({
+              label: choice,
+              value: choice,
+            }))}
+            selected={formValues[field.question_text] || []}
             onChange={(value) => handleChange(field.question_text, value)}
           />
         );
