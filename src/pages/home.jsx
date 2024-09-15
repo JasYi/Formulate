@@ -93,7 +93,7 @@ function Home() {
         {
           targets: typingTextRef.current,
           opacity: [0, 1],
-          duration: 120,
+          duration: 1200,
         },
         "-=600"
       )
