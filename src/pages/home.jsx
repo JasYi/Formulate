@@ -6,6 +6,7 @@ import { api } from "../../convex/_generated/api";
 import { useMutation } from "convex/react";
 import { useNavigate } from "react-router-dom";
 
+
 function Home() {
   const generateUploadUrl = useMutation(api.messages.generateUploadUrl);
   const sendImage = useMutation(api.messages.sendImage);
@@ -21,6 +22,8 @@ function Home() {
   const subtitleRef = useRef(null);
   const fileUploadRef = useRef(null);
   const typingTextRef = useRef(null);
+
+  
   
   useEffect(() => {
     const timeline = anime.timeline({
@@ -62,10 +65,14 @@ function Home() {
     cursorChar: '●'
   });
 
+
   // Clean up function
   return () => {
     typed.destroy();
   };
+
+
+  
 }, []);
 
 
@@ -95,7 +102,9 @@ function Home() {
   }
 
   return (
+    
     <div className="formulate min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 flex flex-col items-center justify-center p-4">
+
       <header ref={headerRef} className="app-header mb-8">
         <div className="logo flex items-center space-x-2">
         <svg width="50" height="29" viewBox="0 0 50 29" fill="none" xmlns="http://www.w3.org/2000/svg">
