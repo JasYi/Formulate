@@ -24,6 +24,34 @@ const Dashboard = () => {
     alert("Copied link to clipboard");
   }
 
+  function downloadCSV() {
+    var matrix = JSON.parse(JSON.stringify(formData[1]));
+    matrix.unshift(formData[0]);
+    const filename = formID + ".csv";
+
+    // Step 1: Convert the matrix to CSV format
+    const csvContent = matrix.map((row) => row.join(",")).join("\n");
+
+    // Step 2: Create a Blob object for the CSV data
+    const blob = new Blob([csvContent], { type: "text/csv" });
+
+    // Step 3: Create a link element to trigger the download
+    const link = document.createElement("a");
+    const url = URL.createObjectURL(blob);
+    link.href = url;
+    link.download = filename;
+
+    // Step 4: Append the link to the document and trigger the download
+    document.body.appendChild(link);
+    link.click();
+
+    // Step 5: Cleanup (remove the link and revoke the URL object)
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
+  // Example usage:
+
   if (!formData) {
     return <div>Loading...</div>;
   }
@@ -52,6 +80,7 @@ const Dashboard = () => {
             rows={formData[1]}
           />
         </LegacyCard>
+        <Button onClick={downloadCSV}>Download CSV</Button>
       </Page>
     </div>
   );
