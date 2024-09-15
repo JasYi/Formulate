@@ -8,9 +8,20 @@ export const getAllEntries = query({
     if (args.taskListId == "") {
       return [];
     }
-    console.log(args.taskListId);
-    const tasks = await ctx.db.query("documents").collect();
+    const tasks = await ctx.db.query(args.taskListId).collect();
     console.log(tasks);
-    return tasks;
+    if (tasks.length == 0) {
+      return [[], []];
+    }
+    const columns = Object.keys(tasks[0]);
+    var objects = [];
+    tasks.forEach((task) => {
+      var toAdd = [];
+      columns.forEach((column) => {
+        toAdd.push(task[column]);
+      });
+      objects.push(toAdd);
+    });
+    return [columns, objects];
   },
 });

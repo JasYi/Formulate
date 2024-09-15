@@ -1,6 +1,6 @@
 #root {
-    max-width: 100%;
-    margin: 0 0;
+  max-width: 100%;
+  margin: 0 0;
 
     text-align: left;
     overflow-y: auto; 
@@ -14,21 +14,17 @@
     transition: filter 300ms;
   }
   .logo:hover {
-    filter: drop-shadow(0 0 1.4em #121212aa);
+    filter: drop-shadow(0 0 2em #646cffaa);
   }
   .logo.react:hover {
-    filter: drop-shadow(0 0 1.4em #121212aa);
+    filter: drop-shadow(0 0 2em #61dafbaa);
   }
-
   .main-title {
     transition: filter 400ms;
   }
   .main-title:hover {
     filter: drop-shadow(0 0 0.4em #121212aa);
   }
-
-
-
   @keyframes logo-spin {
     from {
       transform: rotate(0deg);
@@ -50,4 +46,17 @@
   
   .read-the-docs {
     color: #888;
+  }
+  .form-container {
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 60px;
+    padding-top: 30px;
+  }
+  
+  .main-desc {
+    font-size: x-large;
+    line-height: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 30px;
   }

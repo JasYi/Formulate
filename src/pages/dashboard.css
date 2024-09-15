@@ -1,0 +1,12 @@
+.flex-div {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  color: black;
+  width: fit-content;
+  margin-left: 5px;
+  margin-right: 10px;
+  font-weight: bold;
+}
