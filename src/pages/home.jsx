@@ -100,7 +100,7 @@ function Home() {
 
     console.log("form ID:", formID);
 
-    navigate("/dashboard?id=" + formID);
+    navigate("/form?id=" + formID);
 
     setSelectedImage(null);
     imageInput.current.value = "";
@@ -183,4 +183,5 @@ function Home() {
     </div>
   );
 }
+
 export default Home;
