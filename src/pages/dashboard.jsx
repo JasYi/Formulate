@@ -30,6 +30,7 @@ const Dashboard = () => {
   return (
     <div>
       <Page title="Data Dashboard">
+        <h2>This is your data dashboard, save this link!</h2>
         <div className="flex-div">
           <h2>Your form share link:</h2>
           <h2 className="link">

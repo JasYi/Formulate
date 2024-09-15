@@ -8,10 +8,12 @@ export const getAllEntries = query({
     if (args.taskListId == "") {
       return [];
     }
-    console.log(args.taskListId);
     const tasks = await ctx.db.query(args.taskListId).collect();
+    console.log(tasks);
+    if (tasks.length == 0) {
+      return [[], []];
+    }
     const columns = Object.keys(tasks[0]);
-    console.log(columns);
     var objects = [];
     tasks.forEach((task) => {
       var toAdd = [];
