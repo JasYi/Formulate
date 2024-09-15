@@ -31,12 +31,13 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   line-height: 1.5rem;
+  padding: 1rem;
 }
 
 .app-header {
@@ -64,7 +65,7 @@
 }
 
 .main-title {
-  font-size: 7.5vw;
+  font-size: 6rem;
   font-weight: 700;
   margin-top: 1.5rem;
   color: #333;
@@ -150,3 +151,35 @@ input[type="submit"]:hover {
   color: #d5d5d5;
 }
 
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 5.5rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .file-upload {
+    max-width: 100%;
+  }
+
+  label[for="file-input"] {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 4.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
+
+  }
+
+  .header-title {
+    font-size: 1rem;
+  }
+}
