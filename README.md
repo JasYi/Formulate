@@ -16,3 +16,5 @@ Hackathon project for Hack the North
 1. Extracting form json schema using gpt-4o
 2. Spinning up Convex backend
 3. Rendering react code based on the schema
+
+Hope you enjoy :)
