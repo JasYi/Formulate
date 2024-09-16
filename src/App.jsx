@@ -14,6 +14,7 @@ import Form from "./pages/form";
 import UploadForm from "./pages/loading";
 import Dashboard from "./pages/dashboard";
 import Submission from "./pages/submission";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="submission" element={<Submission />} />
         </Routes>
       </BrowserRouter>
+      <Analytics />
     </>
   );
 }
