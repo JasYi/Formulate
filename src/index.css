@@ -15,7 +15,7 @@
   --upload-border: #000000;
   --button-bg: #333;
   --button-text: #fff;
-  --button-hover: #555;
+  --button-hover: #8a8a8a;
 }
 
 .dark-mode {
@@ -172,7 +172,7 @@ label[for="file-input"] {
   transition: background-color 0.3s ease;
 }
 
-.SendImage:hover:not(:disabled) {
+.SendImage:hover {
   background-color: var(--button-hover);
 }
 

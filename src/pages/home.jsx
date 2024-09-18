@@ -337,7 +337,9 @@ function Home() {
             )}
           </div>
         )}
+        
       </main>
+      
     </div>
   );
 }
